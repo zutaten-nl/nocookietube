@@ -1,0 +1,120 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: rgb(249, 249, 249);
+  --page-width: 62rem;
+}
+
+body.playing {
+  background: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 45rem) {
+  .player {
+    --page-width: 30rem;
+  }
+}
+
+@media (max-width: 62rem) {
+  .player {
+    --page-width: 45rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  body {
+    --page-width: 80rem;
+  }
+}
+
+main {
+  position: fixed;
+  top: 2.5rem;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+nav {
+  background: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: .5rem;
+  text-align: center;
+  transition: all .5s;
+}
+
+.playing nav {
+  opacity: 0;
+}
+
+.playing nav:hover {
+  opacity: 1;
+}
+
+nav .logo {
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  color: magenta;
+}
+
+nav .info-icon {
+  float: right;
+  width: 2rem;
+  height: 2rem;
+  color: magenta;
+}
+
+nav .loading svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: magenta;
+}
+
+nav input {
+  font-size: 1rem;
+  font-family: sans-serif;
+  padding: .2rem;
+  border: .05rem solid black;
+}
+
+dialog {
+  max-width: 30rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
+  margin-top: 2rem;
+}
+
+dialog svg {
+  width: 2rem;
+  height: 2rem;
+  float: right;
+  color: magenta;
+}
+
+.player {
+  background: black;
+  height: calc((9 / 16) * var(--page-width));
+}
+
+.player iframe {
+  width: 100%;
+  max-width: var(--page-width);
+  height: calc((9 / 16) * var(--page-width));
+  display: block;
+  margin: auto;
+}
+
+.player.float iframe {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  width: 30rem;
+  height: calc((9 / 16) * 30rem);
+}

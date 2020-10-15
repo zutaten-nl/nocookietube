@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+    <title>Youtube, Don't bug me</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/svg+xml" id="favicon" href="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 60'><path fill='magenta' d='M63 15c-1-3-3-5-6-6L33 8 8 9c-2 1-5 3-5 6-2 5-2 15-2 15l2 15c0 3 3 5 5 6l25 1 24-1c3-1 5-3 6-6l1-15-1-15z'/></svg>">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+    <defs>
+        <symbol id="logo" viewBox='0 0 66 60'><path fill='currentColor' d='M63 15c-1-3-3-5-6-6L33 8 8 9c-2 1-5 3-5 6-2 5-2 15-2 15l2 15c0 3 3 5 5 6l25 1 24-1c3-1 5-3 6-6l1-15-1-15z'/></symbol>
+        <symbol id="loader" viewBox="0 0 10 10"><circle r="4" cx="5" cy="5" stroke="currentColor" fill="transparent" stroke-dashoffset="25" stroke-dasharray="25"><animateTransform attributeName="transform" type="rotate" from="90 5 5" to="450 5 5" dur="0.8s" repeatCount="indefinite"/><animate attributeName="stroke-dashoffset" values="0;25;0" dur="1.60s" repeatCount="indefinite"/></circle></symbol>
+        <symbol id="info" viewBox="0 0 24 24"><g fill="currentColor"><path d="M6.5 3.8h11c1.5 0 2.8 1.2 2.8 2.7v11c0 1.5-1.3 2.8-2.8 2.8h-11a2.7 2.7 0 01-2.8-2.8v-11C3.8 5 5 3.7 6.5 3.7zm0 1.5c-.7 0-1.3.5-1.3 1.2v11c0 .7.6 1.3 1.3 1.3h11c.7 0 1.3-.6 1.3-1.3v-11c0-.7-.6-1.3-1.3-1.3h-11z"/><circle cx="11.8" cy="7.9" r="1"/><path d="M11.4 16.3c0 .4.3.7.7.7h1.6a.8.8 0 000-1.5H13V11c0-.4-.4-.7-.8-.7h-1.6a.7.7 0 100 1.5h.9v4.6z"/></g></symbol>
+        <symbol id="close" viewBox="0 0 10 10"><path fill="currentColor" d="M7.1 1.4l1.4 1.4-5.6 5.6L1.5 7zm-4.2 0L8.5 7 7.1 8.4 1.5 2.8z"/></symbol>
+    </defs>
+</svg>
+
+<main>
+    <nav>
+        <svg class="logo"><use href="#logo"/></svg>
+        <svg class="info-icon"><use href="#info"/></svg>
+        <form hidden><input name="q" type="text" placeholder="Youtube Url" size="28"></form>
+        <div class="loading"><svg><use href="#loader"/></svg></div>
+    </nav>
+    <dialog class="info">
+        <svg><use href="#close"/></svg>
+        <h1>Youtube, Don't bug me</h1>
+        <p>Trying to keep your privacy footprint as low as possible on youtube is hard. Not being logged in is actively punished, by multiple popups.</p>
+        <p>This small player is a simple iframe embed, so you can watch Youtube without popups. It also requests videos from the youtube-nocookie domain, so no cookies are stored.</p>
+        <p>Drag the link below to your bookmarks to have it easily available when you land on Youtube.</p>
+        <p><a href="javascript:const hash=escape((new URLSearchParams(window.location.search).get('v'))); if (hash===null){return}window.location.href='https://zutaten-nl.github.io/nocookietube/#'+ hash">NoCookieTube</a></p>
+    </dialog>
+    <div class="theater" hidden>
+        <div class="player"><div id="player"></div></div>
+    </div>
+</main>
+
+<script src="js/main.js" type="module"></script>
+
+</body>
+</html>

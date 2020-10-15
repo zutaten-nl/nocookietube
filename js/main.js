@@ -25,18 +25,18 @@ const youtubeApi = () => {
 
 const ytStateChange = (event) => {
   switch (event.data) {
-    default:
+    case YT.PlayerState.ENDED:
+    case YT.PlayerState.CUED:
       theater.hidden = true;
       document.body.classList.remove('playing')
       break;
     case YT.PlayerState.PLAYING:
+    case YT.PlayerState.BUFFERING:
       theater.hidden = false;
       document.body.classList.add('playing')
       loading.hidden = true;
       break;
     case YT.PlayerState.PAUSED:
-      break;
-    case YT.PlayerState.BUFFERING:
       break;
   }
 };
@@ -58,6 +58,7 @@ youtubeApi().then(() => {
       wmode: 'transparent',
       showinfo: 0,
       autohide: 1,
+      autoplay: 1,
     },
     events: {
       'onStateChange': ytStateChange,

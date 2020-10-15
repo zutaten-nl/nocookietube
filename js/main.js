@@ -42,7 +42,7 @@ const ytStateChange = (event) => {
 };
 
 const onPlayerReady = () => {
-  if (location.hash) {
+  if (location.hash && location.hash !== '#null') {
     player.loadVideoById(location.hash.substr(1));
   } else {
     loading.hidden = true;

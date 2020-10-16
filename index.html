@@ -2,9 +2,26 @@
 <html lang="EN">
 <head>
     <title>Youtube, Don't bug me</title>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" id="favicon" href="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 60'><path fill='magenta' d='M63 15c-1-3-3-5-6-6L33 8 8 9c-2 1-5 3-5 6-2 5-2 15-2 15l2 15c0 3 3 5 5 6l25 1 24-1c3-1 5-3 6-6l1-15-1-15z'/></svg>">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Avoid cookies and popups on Youtube by clicking a bookmarklet.">
+
+    <meta property="og:site_name" content="NoCookieTube">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="NoCookieTube">
+    <meta property="og:description" content="Avoid cookies and popups on Youtube by clicking a bookmarklet.">
+    <meta property="og:url" content="https://zutaten-nl.github.io/nocookietube/" />
+    <meta property="og:image" content="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 60'><path fill='magenta' d='M63 15c-1-3-3-5-6-6L33 8 8 9c-2 1-5 3-5 6-2 5-2 15-2 15l2 15c0 3 3 5 5 6l25 1 24-1c3-1 5-3 6-6l1-15-1-15z'/></svg>">
+    <meta property="og:image:type" content="image/svg+xml">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NoCookieTube">
+    <meta name="twitter:description" content="Avoid cookies and popups on Youtube by clicking a bookmarklet.">
+    <meta name="twitter:image:src" content="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 60'><path fill='magenta' d='M63 15c-1-3-3-5-6-6L33 8 8 9c-2 1-5 3-5 6-2 5-2 15-2 15l2 15c0 3 3 5 5 6l25 1 24-1c3-1 5-3 6-6l1-15-1-15z'/></svg>">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
@@ -18,19 +35,19 @@
 
 <main>
     <nav>
-        <svg class="logo"><use href="#logo"/></svg>
-        <svg class="info-icon"><use href="#info"/></svg>
-        <form hidden><input name="q" type="text" placeholder="Youtube Url" size="28"></form>
-        <div class="loading"><svg><use href="#loader"/></svg></div>
+        <svg class="logo"><use xlink:href="#logo"/></svg>
+        <form hidden><input name="q" type="url" placeholder="Youtube Url" size="28" required></form>
+        <div class="loading"><svg><use xlink:href="#loader"/></svg></div>
+        <svg class="info-icon"><use xlink:href="#info"/></svg>
     </nav>
-    <dialog class="info">
-        <svg><use href="#close"/></svg>
-        <h1>Youtube, Don't bug me</h1>
+    <div class="info" hidden>
+        <svg><use xlink:href="#close"/></svg>
+        <h1>Youtube, don't bug me</h1>
         <p>Trying to keep your privacy footprint as low as possible on Youtube is hard. Not being logged in is actively punished, by multiple popups.</p>
         <p>This small player is a simple iframe embed, so you can watch Youtube without popups. It also requests videos from the youtube-nocookie domain, so no cookies are stored.</p>
         <p>Drag the link below to your bookmarks, and click on it when you land on a Youtube video page.</p>
         <p><a href="javascript:const hash=escape((new URLSearchParams(window.location.search).get('v'))); if (hash!==null){window.location.href='https://zutaten-nl.github.io/nocookietube/#'+hash}">NoCookieTube</a></p>
-    </dialog>
+    </div>
     <div class="theater" hidden>
         <div class="player"><div id="player"></div></div>
     </div>

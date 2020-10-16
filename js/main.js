@@ -68,25 +68,35 @@ youtubeApi().then(() => {
 });
 
 document.querySelector('.info-icon').addEventListener('click', () => {
-  info.setAttribute('open', 'open');
+  info.hidden = false;
 });
 
-info.addEventListener('click', () => {
-  info.removeAttribute('open');
+info.querySelector('svg').addEventListener('click', () => {
+  info.hidden = true;
 });
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  const value = form[0].value;
   e.target.hidden = true;
   loading.hidden = false;
-  const value = form[0].value;
-  let id = (new URL(value)).pathname.substr(1)
-  if (id === null) {
-    id = (new URLSearchParams(form[0].value).get('v'));
-  }
-  if (id !== null) {
-    player.loadVideoById(id);
-    history.pushState(null, null, '#' + id);
+  try {
+    let id = (new URL(value)).pathname.substr(1)
+    if (id === null) {
+      id = (new URLSearchParams(form[0].value).get('v'));
+    }
+    if (id !== '') {
+      player.loadVideoById(id);
+      history.pushState(null, null, '#' + id);
+    } else {
+      alert('Please provide a Youtube URL');
+      e.target.hidden = false;
+      loading.hidden = true;
+    }
+  } catch (error) {
+    alert(error)
+    e.target.hidden = false;
+    loading.hidden = true;
   }
 });
 
@@ -97,7 +107,7 @@ form[0].addEventListener('focus', e => {
 document.querySelector('.logo').addEventListener('click', () => {
   player.stopVideo();
   form.hidden = false;
-  history.pushState(null, null, '#');
+  history.pushState(null, null,  location.pathname);
 });
 
 window.addEventListener('hashchange', () => {

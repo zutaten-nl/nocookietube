@@ -14,6 +14,13 @@ body.playing {
 }
 
 @media (max-width: 45rem) {
+  nav form {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
   .player {
     --page-width: 30rem;
   }
@@ -31,22 +38,13 @@ body.playing {
   }
 }
 
-main {
-  position: fixed;
-  top: 2.5rem;
-  height: 100%;
-  width: 100%;
-  overflow: scroll;
-}
-
 nav {
   background: white;
-  position: fixed;
-  width: 100%;
-  top: 0;
   padding: .5rem;
-  text-align: center;
   transition: all .5s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .playing nav {
@@ -57,24 +55,21 @@ nav {
   opacity: 1;
 }
 
-nav .logo {
-  float: left;
+nav svg {
+  display: block;
   width: 2rem;
   height: 2rem;
   color: magenta;
 }
 
-nav .info-icon {
-  float: right;
-  width: 2rem;
-  height: 2rem;
-  color: magenta;
+nav form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-nav .loading svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: magenta;
+nav form[hidden] {
+  display: none;
 }
 
 nav input {
@@ -84,17 +79,21 @@ nav input {
   border: .05rem solid black;
 }
 
-dialog {
+.info {
+  background: white;
+  padding: 1rem;
+  margin: 2rem auto auto;
   max-width: 30rem;
+  border: .2rem solid black;
   box-shadow: 0 0 2rem rgba(0, 0, 0, .5);
-  margin-top: 2rem;
 }
 
-dialog svg {
+.info svg {
   width: 2rem;
   height: 2rem;
   float: right;
   color: magenta;
+  cursor: pointer;
 }
 
 .player {

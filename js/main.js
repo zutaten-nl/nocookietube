@@ -75,30 +75,34 @@ info.querySelector('svg').addEventListener('click', () => {
   info.hidden = true;
 });
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const value = form[0].value;
-  e.target.hidden = true;
-  loading.hidden = false;
+const getYoutubeId = url => {
   try {
-    let id = (new URL(value)).pathname.substr(1)
-    if (id === null) {
-      id = (new URLSearchParams(form[0].value).get('v'));
-    }
-    if (id !== '') {
+    url = new URL(url);
+  } catch (error) {
+    return false;
+  }
+
+  if (url.host === 'www.youtube.com') {
+    return (new URLSearchParams(url.search)).get('v');
+  }
+  if (url.host === 'youtu.be') {
+    return url.pathname.substr(1)
+  }
+
+  return false;
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = getYoutubeId(form[0].value);
+    if (id) {
       player.loadVideoById(id);
       history.pushState(null, null, '#' + id);
     } else {
       alert('Please provide a Youtube URL');
-      e.target.hidden = false;
-      loading.hidden = true;
     }
-  } catch (error) {
-    alert(error)
-    e.target.hidden = false;
-    loading.hidden = true;
   }
-});
+);
 
 form[0].addEventListener('focus', e => {
   e.target.select();
@@ -107,7 +111,7 @@ form[0].addEventListener('focus', e => {
 document.querySelector('.logo').addEventListener('click', () => {
   player.stopVideo();
   form.hidden = false;
-  history.pushState(null, null,  location.pathname);
+  history.pushState(null, null, location.pathname);
 });
 
 window.addEventListener('hashchange', () => {

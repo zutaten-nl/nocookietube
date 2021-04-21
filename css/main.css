@@ -3,6 +3,7 @@ body {
   margin: 0;
   background: rgb(249, 249, 249);
   --page-width: 62rem;
+  overflow-x: hidden;
 }
 
 body.playing {
@@ -77,6 +78,20 @@ nav input {
   font-family: sans-serif;
   padding: .2rem;
   border: .05rem solid black;
+}
+
+.new:after {
+  content: '.';
+  position: relative;
+  right: -10px;
+  top: -35px;
+  clip-path: circle(7px);
+  background: red;
+  display: block;
+}
+
+.info-icon {
+  cursor: pointer;
 }
 
 .info {

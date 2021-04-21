@@ -38,15 +38,15 @@
         <svg class="logo"><use xlink:href="#logo"/></svg>
         <form hidden><input name="q" type="url" placeholder="Youtube Url" size="28" required></form>
         <div class="loading"><svg><use xlink:href="#loader"/></svg></div>
-        <svg class="info-icon"><use xlink:href="#info"/></svg>
+        <div class="new"><svg class="info-icon"><use xlink:href="#info"/></svg></div>
     </nav>
     <div class="info" hidden>
         <svg><use xlink:href="#close"/></svg>
-        <h1>Youtube, don't bug me</h1>
-        <p>Trying to keep your privacy footprint as low as possible on Youtube is hard. Not being logged in is actively punished, by multiple popups.</p>
-        <p>This small player is a simple iframe embed, so you can watch Youtube without popups. It also requests videos from the youtube-nocookie domain, so no cookies are stored.</p>
-        <p>Drag the link below to your bookmarks, and click on it when you land on a Youtube video page.</p>
-        <p><a href="javascript:const hash=escape((new URLSearchParams(window.location.search).get('v'))); if (hash!==null){window.location.href='https://zutaten-nl.github.io/nocookietube/#'+hash}">NoCookieTube</a></p>
+        <h1>Avoid Youtube cookies</h1>
+        <p>Drag a link below to your bookmarks, and click on it when you land on a Youtube video page.</p>
+        <p>From youtube.com URL: <a href="javascript:const hash=escape((new URLSearchParams(window.location.search).get('v'))); if (hash!==null){window.location.href='https://zutaten-nl.github.io/nocookietube/#'+hash}">NoCookieTube</a></p>
+        <p><span style="color:red">New</span> From consent.youtube.com URL: <a href="javascript:javascript:window.location.href='https://zutaten-nl.github.io/nocookietube/#'+escape(new%20URLSearchParams(new%20URL(decodeURIComponent(location.href.split('?')[1].substr(9))).search).get('v'));">NoConsentTube</a></p>
+        <p><small>Trying to keep your privacy footprint as low as possible on Youtube is hard. There is a consent middle page, and not being logged in is actively punished, by multiple popups.<br><br>This small player is a simple iframe embed, so you can watch Youtube without popups or consenting. It also requests videos from the youtube-nocookie domain, so no cookies are stored.</small></p>
     </div>
     <div class="theater" hidden>
         <div class="player"><div id="player"></div></div>
